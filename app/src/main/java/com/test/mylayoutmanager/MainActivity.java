@@ -1,11 +1,14 @@
 package com.test.mylayoutmanager;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageView;
+import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.test.mylayoutmanager.gallery.GalleryActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +27,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.gallery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, GalleryActivity.class));
+            }
+        });
 //        RecyclerViewBanner recyclerViewBanner1 = (RecyclerViewBanner) findViewById(R.id.rv_banner_1);
         RecyclerViewBanner recyclerViewBanner2 = (RecyclerViewBanner) findViewById(R.id.rv_banner_2);
 //        RecyclerViewBanner recyclerViewBanner3 = (RecyclerViewBanner) findViewById(R.id.rv_banner_3);
@@ -78,6 +87,13 @@ public class MainActivity extends AppCompatActivity {
                         .load(banners.get(position).getUrl())
                         .placeholder(R.mipmap.ic_launcher)
                         .into(bannerView);
+            }
+        });
+        recyclerViewBanner2.setOnRvBannerClickListener(new RecyclerViewBanner.OnRvBannerClickListener() {
+            @Override
+            public void onClick(int position) {
+                //点击事件
+                Toast.makeText(MainActivity.this, "点击了第" + position + "张图", Toast.LENGTH_SHORT).show();
             }
         });
 //        recyclerViewBanner3.setRvBannerData(banners);

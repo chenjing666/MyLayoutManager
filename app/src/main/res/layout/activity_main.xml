@@ -29,6 +29,11 @@
             loonggg:rvb_indicatorUnselectedSrc="@drawable/svg_ic_unselected"
             tools:background="@color/colorPrimaryDark"/>
         <!--支持svg矢量图-->
+        <Button
+            android:id="@+id/gallery"
+            android:text="gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <!--<com.test.mylayoutmanager.RecyclerViewBanner-->
             <!--android:id="@+id/rv_banner_3"-->
